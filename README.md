@@ -15,28 +15,43 @@ $ npm i spa-static
 
 Usage
 ---
+
+Via shell command:
+``` sh
+# Load from environment variables, only one server is supported
+$ HOST=localhost PORT=4002 spa-static
+
+# Load from config file, multiple servers are supported
+$ spa-static -c config.js
+```
+
 Via JavaScript:
 ``` node
-require('spa-static')({
-  host: 'localhost',
-  port: 4002,
-}, (e, callback) => {
+require('spa-static')(config, (e, callback) => {
   if (e) throw e;
   console.log('Listening...');
 });
 ```
 
-Via bash:
-``` sh
-$ HOST=localhost PORT=4002 spa-static
-```
+`config` can be either an object or an array of objects with properties
+below:
 
-Options
----
-JavaScript options can be mapped to environment variables for running through scripts.
+* host
 
-* HOST -> options.host: default as `localhost`
-* PORT -> options.port: default as `4000`
-* PREFIX -> options.prefix: default as `''`
-* STATIC -> options.staticDir: default as `./static`
-* INDEX -> options.index: default as `/index.html`
+  Default as `process.env.HOST` or `localhost`
+
+* port
+
+  Default as `process.env.PORT` or `4000`
+
+* prefix
+
+  Default as `process.env.PREFIX` or `''`
+
+* staticDir
+
+  Default as `process.env.STATIC` or `./static`
+
+* index
+
+  Default as `process.env.INDEX` or `/index.html`
