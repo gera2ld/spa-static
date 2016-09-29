@@ -1,17 +1,3 @@
 #!/usr/bin/env node
 
-const env = process.env;
-
-require('..')({
-  host: env.HOST,
-  port: env.PORT,
-  staticDir: env.STATIC,
-  index: env.INDEX,
-  prefix: env.PREFIX,
-}, (e, server) => {
-  if (e) console.error(e);
-  else {
-    const addr = server.address();
-    console.log(`Listening at ${addr.address}:${addr.port}...`);
-  }
-});
+require('../lib/cli');
