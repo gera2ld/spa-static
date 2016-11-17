@@ -8,7 +8,7 @@
     "spa-static": "bin/start"
   },
   "scripts": {
-    "start": "node ."
+    "start": "node bin/start"
   },
   "keywords": [
     "static",
@@ -20,6 +20,7 @@
   "dependencies": {
     "koa": "^1.2.0",
     "koa-compress": "^1.0.9",
+    "koa-conditional-get": "^1.0.3",
     "koa-etag": "^2.1.1",
     "koa-send": "^3.2.0"
   }
