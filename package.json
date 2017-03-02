@@ -2,7 +2,7 @@
   "name": "spa-static",
   "version": "1.2.0",
   "description": "Static server for SPAs",
-  "main": "index.js",
+  "main": "lib",
   "preferGlobal": true,
   "bin": {
     "spa-static": "bin/start"
@@ -18,10 +18,11 @@
   "author": "Gerald <i@gerald.top>",
   "license": "MIT",
   "dependencies": {
-    "koa": "^1.2.0",
-    "koa-compress": "^1.0.9",
-    "koa-conditional-get": "^1.0.3",
-    "koa-etag": "^2.1.1",
+    "js-yaml": "^3.8.1",
+    "koa": "^2.0.1",
+    "koa-compress": "^2.0.0",
+    "koa-conditional-get": "^2.0.0",
+    "koa-etag": "^3.0.0",
     "koa-send": "^3.2.0"
   }
 }

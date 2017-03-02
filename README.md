@@ -6,6 +6,8 @@
 
 A web server to serve static files for SPAs.
 
+Requires Koa 2.
+
 ## Installation
 ``` sh
 $ npm i spa-static
@@ -15,43 +17,67 @@ $ npm i spa-static
 
 ### Shell command
 ``` sh
-# Load from environment variables, only one server is supported
-$ HOST=localhost PORT=4002 spa-static
+$ spa-static
+# or
+$ spa-static config.json
 
-# Load from config file, multiple servers are supported
-$ spa-static -c config.js
+# Load from a yaml config file
+$ spa-static config.yml
+```
+
+A sample `config.js` may be like this:
+
+``` js
+module.exports = [
+  {
+    host: '',
+    port: 4000,
+    staticDir: 'static',
+  },
+];
+```
+
+Or `config.yml` like this:
+
+``` yaml
+- host: ''
+  port: 4000
+  staticDir: static
 ```
 
 ### Node.js command
 ``` js
-require('spa-static')(config, (e, callback) => {
-  if (e) throw e;
-  console.log('Listening...');
+require('spa-static')(config, (err, server) => {
+  if (err) throw err;
+  console.log(`Listening at ${server.address()}...`);
 });
 ```
 
-`config` can be either an object or an array of objects with properties
-below:
+`config` is an object with following attributes:
 
 * host
 
-  Default as `process.env.HOST` or `localhost`
+  Default as `localhost`.
 
 * port
 
-  Default as `process.env.PORT` or `4000`
+  Default as `4000`.
 
 * prefix
 
-  Default as `process.env.PREFIX` or `''`
+  Default as `''`.
 
 * staticDir
 
-  Default as `process.env.STATIC` or `./static`
+  Default as `./static`.
 
 * index
 
-  Default as `process.env.INDEX` or `/index.html`
+  Default as `/index.html`.
+
+* headers
+
+  An object of headers to be set for each response.
 
 ### Koa middleware
 
@@ -59,7 +85,7 @@ below:
 const Koa = require('koa');
 const spaStatic = require('spa-static/lib/middleware');
 
-const app = Koa();
+const app = new Koa();
 
 app.use(spaStatic()); // use default settings
 // or
