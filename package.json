@@ -25,5 +25,14 @@
     "koa-conditional-get": "^2.0.0",
     "koa-etag": "^3.0.0",
     "koa-send": "^3.3.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gera2ld/spa-static.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gera2ld/spa-static/issues"
+  },
+  "homepage": "https://github.com/gera2ld/spa-static#readme"
 }
