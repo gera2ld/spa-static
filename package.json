@@ -1,6 +1,6 @@
 {
   "name": "spa-static",
-  "version": "1.2.0",
+  "version": "2.0.0-beta",
   "description": "Static server for SPAs",
   "main": "lib",
   "preferGlobal": true,
